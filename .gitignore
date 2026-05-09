@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+nested-form/node_modules/
+
+# build outputs
+nested-form/dist/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env
+.env
+.env.*
+!.env.example
+
+# editor
+.vscode/
