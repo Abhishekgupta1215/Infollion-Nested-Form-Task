@@ -20,7 +20,10 @@ function App() {
     return saved ? JSON.parse(saved) : []
   })
 
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(() => {
+    const saved = localStorage.getItem("formSubmitted")
+    return saved ? JSON.parse(saved) : false
+  })
 
   useEffect(() => {
     localStorage.setItem(
@@ -28,6 +31,13 @@ function App() {
       JSON.stringify(questions)
     )
   }, [questions])
+
+  useEffect(() => {
+    localStorage.setItem(
+      "formSubmitted",
+      JSON.stringify(submitted)
+    )
+  }, [submitted])
 
   const addQuestion = () => {
     setQuestions([...questions, createQuestion()])
